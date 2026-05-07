@@ -1,7 +1,7 @@
-const express = require('express')
-const db = require('./db')
-const app = express()
+import express from 'express'
+import db from './db.js'
 
+const app = express()
 app.use(express.json())
 
 // GET /cursos
