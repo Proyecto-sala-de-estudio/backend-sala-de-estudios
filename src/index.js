@@ -15,7 +15,7 @@ const swaggerSpec = swaggerJsdoc({
             description: 'API para gestionar cursos academicos'
         }
     },
-    apis: ['./index.js']
+    apis: ['./src/index.js']
 })
 app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec))
 
