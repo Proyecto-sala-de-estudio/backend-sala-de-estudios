@@ -13,7 +13,11 @@ const swaggerSpec = swaggerJsdoc({
             title: 'API Cursos',
             version: '1.0.0',
             description: 'API para gestionar cursos academicos'
-        }
+        },
+        servers: [
+            { url: 'http://localhost:3000' },
+            { url: 'https://backend-sala-de-estudios.onrender.com' }
+        ]
     },
     apis: ['./src/index.js']
 })
