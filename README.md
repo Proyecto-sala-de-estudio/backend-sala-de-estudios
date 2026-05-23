@@ -9,5 +9,5 @@ API para gestionar salas de estudios, reservas y reglas del sistema.
 npm install
 
 # ejecutar el servidor
-npm start
+npm run start
 ```
