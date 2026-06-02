@@ -125,16 +125,7 @@
             "headers": [],
             "body": {
                 "type": "json",
-                "raw": [
-                    "{",
-                    "  \"nombre\": \"Sala de Certificación\",",
-                    "  \"edificio\": \"Edificio Tecnológico\",",
-                    "  \"piso\": \"Piso 3\",",
-                    "  \"capacidad\": 10,",
-                    "  \"equipamiento\": \"Proyector, Pizarra Interactiva\",",
-                    "  \"estado\": \"disponible\"",
-                    "}"
-                ],
+                "raw": "{\n  \"nombre\": \"Sala de Certificación\",\n  \"edificio\": \"Edificio Tecnológico\",\n  \"piso\": \"Piso 3\",\n  \"capacidad\": 10,\n  \"equipamiento\": \"Proyector, Pizarra Interactiva\",\n  \"estado\": \"disponible\"\n}",
                 "form": []
             },
             "tests": [
@@ -157,14 +148,7 @@
             "headers": [],
             "body": {
                 "type": "json",
-                "raw": [
-                    "{",
-                    "  \"edificio\": \"Edificio Norte\",",
-                    "  \"piso\": \"Piso 1\",",
-                    "  \"capacidad\": 5,",
-                    "  \"estado\": \"disponible\"",
-                    "}"
-                ],
+                "raw": "{\n  \"edificio\": \"Edificio Norte\",\n  \"piso\": \"Piso 1\",\n  \"capacidad\": 5,\n  \"estado\": \"disponible\"\n}",
                 "form": []
             },
             "tests": [
@@ -187,7 +171,7 @@
             "headers": [],
             "body": {
                 "type": "json",
-                "raw": ["{", "  \"capacidad\": 15", "}"],
+                "raw": "{\n  \"capacidad\": 15\n}",
                 "form": []
             },
             "tests": [

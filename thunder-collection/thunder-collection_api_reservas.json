@@ -71,14 +71,7 @@
             "headers": [],
             "body": {
                 "type": "json",
-                "raw": [
-                    "{",
-                    "  \"salaId\": 1,",
-                    "  \"estudiante\": \"Martín Vega\",",
-                    "  \"fecha\": \"2026-06-15\",",
-                    "  \"hora\": \"14:30:00\"",
-                    "}"
-                ],
+                "raw": "{\n  \"salaId\": 1,\n  \"estudiante\": \"Martín Vega\",\n  \"fecha\": \"2026-06-15\",\n  \"hora\": \"14:30:00\"\n}",
                 "form": []
             },
             "tests": [
@@ -101,13 +94,7 @@
             "headers": [],
             "body": {
                 "type": "json",
-                "raw": [
-                    "{",
-                    "  \"salaId\": 1,",
-                    "  \"fecha\": \"2026-06-15\",",
-                    "  \"hora\": \"14:30:00\"",
-                    "}"
-                ],
+                "raw": "{\n  \"salaId\": 1,\n  \"fecha\": \"2026-06-15\",\n  \"hora\": \"14:30:00\"\n}",
                 "form": []
             },
             "tests": [
@@ -130,14 +117,7 @@
             "headers": [],
             "body": {
                 "type": "json",
-                "raw": [
-                    "{",
-                    "  \"salaId\": 9999,",
-                    "  \"estudiante\": \"Ignacio Gómez\",",
-                    "  \"fecha\": \"2026-06-15\",",
-                    "  \"hora\": \"16:00:00\"",
-                    "}"
-                ],
+                "raw": "{\n  \"salaId\": 9999,\n  \"estudiante\": \"Ignacio Gómez\",\n  \"fecha\": \"2026-06-15\",\n  \"hora\": \"16:00:00\"\n}",
                 "form": []
             },
             "tests": [
@@ -160,14 +140,7 @@
             "headers": [],
             "body": {
                 "type": "json",
-                "raw": [
-                    "{",
-                    "  \"salaId\": 2,",
-                    "  \"estudiante\": \"Claudio Fuentes\",",
-                    "  \"fecha\": \"2026-06-16\",",
-                    "  \"hora\": \"09:00:00\"",
-                    "}"
-                ],
+                "raw": "{\n  \"salaId\": 2,\n  \"estudiante\": \"Claudio Fuentes\",\n  \"fecha\": \"2026-06-16\",\n  \"hora\": \"09:00:00\"\n}",
                 "form": []
             },
             "tests": [
@@ -190,12 +163,7 @@
             "headers": [],
             "body": {
                 "type": "json",
-                "raw": [
-                    "{",
-                    "  \"estudiante\": \"Martín Vega Actualizado\",",
-                    "  \"hora\": \"15:00:00\"",
-                    "}"
-                ],
+                "raw": "{\n  \"estudiante\": \"Martín Vega Actualizado\",\n  \"hora\": \"15:00:00\"\n}",
                 "form": []
             },
             "tests": [
@@ -218,7 +186,7 @@
             "headers": [],
             "body": {
                 "type": "json",
-                "raw": ["{", "  \"salaId\": 9999", "}"],
+                "raw": "{\n  \"salaId\": 9999\n}",
                 "form": []
             },
             "tests": [
