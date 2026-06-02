@@ -4,6 +4,14 @@ const db = new Database('datos.db')
 db.pragma('foreign_keys = ON')
 
 db.exec(`
+  CREATE TABLE IF NOT EXISTS salas (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    nombre TEXT NOT NULL,
+    edificio TEXT NOT NULL,
+    piso TEXT NOT NULL,
+    capacidad INTEGER NOT NULL,
+    estado TEXT NOT NULL
+  );
 `)
 
 export default db
