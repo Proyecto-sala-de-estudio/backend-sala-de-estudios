@@ -108,6 +108,16 @@ router.post('/', async (req, res) => {
                 .json({ error: 'La sala no se encuentra disponible para reserva' })
         }
 
+        const conflictResult = await db.query(
+            'SELECT * FROM reservas WHERE "salaId" = $1 AND fecha = $2 AND hora = $3',
+            [Number(salaId), fecha, hora]
+        )
+        if (conflictResult.rows.length > 0) {
+            return res
+                .status(400)
+                .json({ error: 'La sala ya cuenta con una reserva activa para la fecha y hora indicadas.' })
+        }
+
         const sql = `
             INSERT INTO reservas ("salaId", estudiante, fecha, hora)
             VALUES ($1, $2, $3, $4)
