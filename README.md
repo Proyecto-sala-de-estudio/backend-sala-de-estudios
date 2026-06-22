@@ -6,21 +6,21 @@ Plataforma para la gestión y reserva de salas de estudio en diferentes edificio
 ## Historia de usuario implementada
 | ID    | Nombre                    | Issue |
 |-------|---------------------------|-------|
-| US-03 | Reservar sala             | #3    |
+| US-03 | Reservar sala             | [#3](https://github.com/Proyecto-sala-de-estudio/backend-sala-de-estudios/issues/3)    |
 (Debe integrar: búsqueda con filtro, CRUD de una entidad y transacción que une 2+ entidades)
 
 ## Artefactos del proyecto
 | Artefacto                          | Ubicación / enlace          |
 |------------------------------------|-----------------------------|
-| Modelo de dominio                  | [Pendiente de creación]     |
-| Diagrama de casos de uso           | [Pendiente de creación]     |
-| Especificación de HU               | ./EspecificacionHU.md       |
-| Diagrama de estados                | [Pendiente de creación]     |
-| Diagrama de despliegue y comp.     | [Pendiente de creación]     |
-| Diagrama de componentes            | [Pendiente de creación]     |
-| Diagrama de secuencia              | [Pendiente de creación]     |
-| Casos de prueba                    | ./CasosDePrueba.md          |
-| Deuda técnica / code smells        | ./DeudaTecnica.md           |
+| Modelo de dominio                  | [Ver diagrama](./docs/modelo-dominio.png) |
+| Diagrama de casos de uso           | [Ver diagrama](./docs/casos-uso.png) |
+| Especificación de HU               | [./EspecificacionHU.md](./EspecificacionHU.md)       |
+| Diagrama de estados                | [Ver diagrama](./docs/estados.png) |
+| Diagrama de despliegue y comp.     | [Ver diagrama](./docs/despliegue.png) |
+| Diagrama de componentes            | [Ver diagrama](./docs/componentes.png) |
+| Diagrama de secuencia              | [Ver diagrama](./docs/secuencia.png) |
+| Casos de prueba                    | [./CasosDePrueba.md](./CasosDePrueba.md)          |
+| Deuda técnica / code smells        | [./DeudaTecnica.md](./DeudaTecnica.md)           |
 
 ## Instrucciones de instalación y ejecución
 ### Requisitos previos
