@@ -15,6 +15,28 @@ export default function Home() {
   const [toastTimeout, setToastTimeout] = useState(null);
   const [mounted, setMounted] = useState(false);
 
+  // Filtros Salas
+  const [filterRoomBuilding, setFilterRoomBuilding] = useState('');
+  const [filterRoomCapacity, setFilterRoomCapacity] = useState('');
+  const [filterRoomStatus, setFilterRoomStatus] = useState('');
+
+  // Filtros Reservas
+  const [filterResName, setFilterResName] = useState('');
+  const [filterResDate, setFilterResDate] = useState('');
+
+  const filteredSalas = salas.filter(sala => {
+    if (filterRoomBuilding && !sala.edificio.toLowerCase().includes(filterRoomBuilding.toLowerCase())) return false;
+    if (filterRoomCapacity && sala.capacidad < Number(filterRoomCapacity)) return false;
+    if (filterRoomStatus && sala.estado !== filterRoomStatus) return false;
+    return true;
+  });
+
+  const filteredReservas = reservas.filter(reserva => {
+    if (filterResName && !reserva.estudiante.toLowerCase().includes(filterResName.toLowerCase())) return false;
+    if (filterResDate && reserva.fecha !== filterResDate) return false;
+    return true;
+  });
+
   const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3000';
 
   const fetchData = async () => {
@@ -226,20 +248,26 @@ export default function Home() {
 
           {/* Active Bookings Card */}
           <section className="card bg-slate-900/40 backdrop-blur-md border border-slate-800/60 shadow-2xl p-6 flex flex-col gap-4">
-            <div className="flex items-center justify-between border-b border-slate-800/60 pb-3">
-              <h2 className="text-xl font-bold text-white">Reservas Activas</h2>
-              <span className="badge badge-primary font-bold text-xs">{reservas.length}</span>
+            <div className="flex flex-col gap-3 border-b border-slate-800/60 pb-3">
+              <div className="flex items-center justify-between">
+                <h2 className="text-xl font-bold text-white">Reservas Activas</h2>
+                <span className="badge badge-primary font-bold text-xs">{filteredReservas.length} / {reservas.length}</span>
+              </div>
+              <div className="flex gap-2">
+                <input type="text" placeholder="Filtrar estudiante..." className="input input-bordered input-sm w-full bg-slate-950/50 text-slate-100 border-slate-700/60" value={filterResName} onChange={(e) => setFilterResName(e.target.value)} />
+                <input type="date" className="input input-bordered input-sm w-full bg-slate-950/50 text-slate-100 border-slate-700/60" value={filterResDate} onChange={(e) => setFilterResDate(e.target.value)} />
+              </div>
             </div>
 
-            {reservas.length === 0 ? (
+            {filteredReservas.length === 0 ? (
               <div className="flex flex-col items-center justify-center py-10 text-slate-400">
                 <span className="text-4xl mb-2">📅</span>
-                <p className="font-semibold text-slate-300 text-sm">No hay reservas activas</p>
-                <p className="text-xs text-slate-500 text-center mt-1">Las salas están disponibles para ser reservadas.</p>
+                <p className="font-semibold text-slate-300 text-sm">No hay reservas que coincidan</p>
+                <p className="text-xs text-slate-500 text-center mt-1">O no hay reservas activas o ninguna coincide con el filtro.</p>
               </div>
             ) : (
               <div className="flex flex-col gap-4 max-h-[380px] overflow-y-auto pr-1">
-                {reservas.map((reserva) => (
+                {filteredReservas.map((reserva) => (
                   <div 
                     key={reserva.id} 
                     className="card bg-slate-950/30 border border-slate-800/80 p-4 flex flex-col gap-3 rounded-xl hover:border-slate-700/60 transition-colors"
@@ -273,9 +301,20 @@ export default function Home() {
 
         {/* Right column (Room Catalog) */}
         <section className="lg:col-span-7 card bg-slate-900/40 backdrop-blur-md border border-slate-800/60 shadow-2xl p-6 flex flex-col gap-6 w-full">
-          <div className="flex items-center justify-between border-b border-slate-800/60 pb-3">
-            <h2 className="text-xl font-bold text-white">Catálogo de Salas</h2>
-            <span className="badge badge-success text-white font-bold text-xs">{salas.length}</span>
+          <div className="flex flex-col gap-3 border-b border-slate-800/60 pb-3">
+            <div className="flex items-center justify-between">
+              <h2 className="text-xl font-bold text-white">Catálogo de Salas</h2>
+              <span className="badge badge-success text-white font-bold text-xs">{filteredSalas.length} / {salas.length}</span>
+            </div>
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
+              <input type="text" placeholder="Filtrar edificio..." className="input input-bordered input-sm w-full bg-slate-950/50 text-slate-100 border-slate-700/60" value={filterRoomBuilding} onChange={(e) => setFilterRoomBuilding(e.target.value)} />
+              <input type="number" placeholder="Cap. min." className="input input-bordered input-sm w-full bg-slate-950/50 text-slate-100 border-slate-700/60" value={filterRoomCapacity} onChange={(e) => setFilterRoomCapacity(e.target.value)} />
+              <select className="select select-bordered select-sm w-full bg-slate-950/50 text-slate-100 border-slate-700/60" value={filterRoomStatus} onChange={(e) => setFilterRoomStatus(e.target.value)}>
+                <option value="">Cualquier estado</option>
+                <option value="disponible">Disponible</option>
+                <option value="mantenimiento">Mantenimiento</option>
+              </select>
+            </div>
           </div>
 
           {apiStatus === 'loading' ? (
@@ -294,15 +333,15 @@ export default function Home() {
                 Reintentar
               </button>
             </div>
-          ) : salas.length === 0 ? (
+          ) : filteredSalas.length === 0 ? (
             <div className="flex flex-col items-center justify-center py-16 text-slate-400 gap-2">
               <span className="text-4xl">🚪</span>
-              <p className="font-bold text-white text-sm">No hay salas registradas</p>
-              <p className="text-xs text-slate-500">Agrega salas mediante la API o base de datos.</p>
+              <p className="font-bold text-white text-sm">No hay salas que coincidan</p>
+              <p className="text-xs text-slate-500">Prueba ajustando los filtros de búsqueda.</p>
             </div>
           ) : (
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 max-h-[620px] overflow-y-auto pr-1">
-              {salas.map((sala) => (
+              {filteredSalas.map((sala) => (
                 <div 
                   key={sala.id} 
                   className="card bg-slate-950/30 border border-slate-800/80 hover:border-indigo-500/40 hover:bg-slate-950/60 hover:-translate-y-0.5 transition-all duration-300 p-4 rounded-xl flex flex-col justify-between gap-4"
